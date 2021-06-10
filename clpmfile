@@ -1,0 +1,7 @@
+;;; -*- Mode: common-lisp; -*-
+(:api-version "0.3")
+
+(:source "quicklisp" :url "https://quicklisp.common-lisp-project-index.org/" :type :ql-clpi)
+
+(:system "uiop")
+(:github "resettable-class" :path "ohmree/resettable-class" :branch "main")
