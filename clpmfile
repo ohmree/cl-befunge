@@ -3,5 +3,9 @@
 
 (:source "quicklisp" :url "https://quicklisp.common-lisp-project-index.org/" :type :ql-clpi)
 
+(:asd "befunge.asd")
+
 (:system "uiop")
+(:system "alexandria")
+(:system "array-operations")
 (:github "resettable-class" :path "ohmree/resettable-class" :branch "main")

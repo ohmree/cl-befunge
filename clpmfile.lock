@@ -9,7 +9,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 :sources
-(:implicit-file :type :file-system :system-files nil)
+(:implicit-file :type :file-system :system-files ("befunge.asd"))
 (:implicit-vcs :type :vcs :projects
  (("resettable-class" :github :path "ohmree/resettable-class")))
 ("quicklisp" :url "https://quicklisp.common-lisp-project-index.org/" :type
@@ -22,7 +22,10 @@
 
 :requirements
 (:project :name "resettable-class" :branch "main" :source :implicit-vcs)
+(:system :name "array-operations")
+(:system :name "alexandria")
 (:system :name "uiop")
+(:asd-file :name "befunge.asd")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -30,10 +33,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 :releases
-("closer-mop" :version "2021-04-11" :source "quicklisp" :systems ("closer-mop"))
+("alexandria" :version "2021-04-11" :source "quicklisp" :systems ("alexandria"))
+("anaphora" :version "2021-01-24" :source "quicklisp" :systems ("anaphora"))
+("array-operations" :version "2021-04-11" :source "quicklisp" :systems
+ ("array-operations"))
+("befunge.asd" :version :newest :source :implicit-file :systems
+ ("befunge" "befunge/tests"))
+("closer-mop" :version "2021-06-30" :source "quicklisp" :systems ("closer-mop"))
+("let-plus" :version "2019-11-30" :source "quicklisp" :systems ("let-plus"))
 ("resettable-class" :version
  (:commit "034c9406b3784507d7eb7987213d072742d7a7e0") :source :implicit-vcs
  :systems ("resettable-class"))
+("rove" :version "2020-03-25" :source "quicklisp" :systems ("rove"))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -41,8 +52,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 :reverse-dependencies
+("alexandria" ((:system :name "let-plus") (:system :name "alexandria"))
+ ((:system :name "befunge") (:system :name "alexandria"))
+ (t (:system :name "alexandria")))
+
+("anaphora" ((:system :name "let-plus") (:system :name "anaphora")))
+
+("array-operations" (t (:system :name "array-operations")))
+
+("befunge.asd" ((:system :name "befunge/tests") (:system :name "befunge"))
+ (t (:asd-file :name "befunge.asd")))
+
 ("closer-mop" ((:system :name "resettable-class") (:system :name "closer-mop")))
 
+("let-plus" ((:system :name "array-operations") (:system :name "let-plus")))
+
 ("resettable-class"
- (t (:project :name "resettable-class" :branch "main" :source :implicit-vcs)))
+ ((:system :name "befunge") (:system :name "resettable-class"))
+ (t
+  (:project :name "resettable-class" :commit
+   "034c9406b3784507d7eb7987213d072742d7a7e0" :source :implicit-vcs)))
+
+("rove" ((:system :name "befunge/tests") (:system :name "rove")))
 

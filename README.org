@@ -1,4 +1,5 @@
 * Befunge 
+A Befunge-93 interpreter in Common Lisp
 
 ** Usage
 
@@ -11,7 +12,3 @@
 ** Copyright
 
 Copyright (c) 2021 Me :)
-
-** License
-
-Licensed under the MIT License.

@@ -2,9 +2,10 @@
   :version "0.1.0"
   :author "Me :)"
   :license "MIT"
-  :depends-on ("croatoan"
-               "str"
+  :depends-on (;; "croatoan"
                "uiop"
+               "array-operations"
+               "alexandria"
                "resettable-class")
   :components ((:file "befunge"))
   :description ""
